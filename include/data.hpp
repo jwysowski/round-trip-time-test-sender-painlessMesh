@@ -1,5 +1,5 @@
-#ifndef TRENDS_HPP
-#define TRENDS_HPP
+#ifndef DATA_HPP
+#define DATA_HPP
 
 #define BAUDRATE        9600
 
@@ -9,4 +9,4 @@
 extern const char *ssid;
 extern const char *password;
     
-#endif /* TRENDS_HPP */
+#endif /* DATA_HPP */

@@ -7,6 +7,7 @@
 void received_callback(const uint32_t &from, const String &msg);
 
 painlessMesh mesh;
+String chip_id;
 void setup() {
 	Serial.begin(BAUDRATE);
 
@@ -17,9 +18,7 @@ void setup() {
 	mesh.setContainsRoot(true);
 	mesh.onReceive(&received_callback);
 
-    //message_offset
-    for (int i = 0; i < OFFSET_SIZE; i++)
-        message_offset += String(':');
+    chip_id = String(ESP.getChipId());
 }
 
 void loop() {
@@ -27,5 +26,5 @@ void loop() {
 }
 
 void received_callback(const uint32_t &from, const String &msg) {
-    mesh.sendBroadcast(String(ESP.getChipId()) + String('\t') + msg);
+    mesh.sendBroadcast(chip_id + String('\t') + msg);
 }
