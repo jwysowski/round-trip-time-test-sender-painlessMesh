@@ -25,6 +25,8 @@ void loop() {
 }
 
 void received_callback(const uint32_t &from, const String &msg) {
-    if (msg.length() < 21)
-		mesh.sendBroadcast(chip_id + String('\t') + msg);
+    if (msg.equals(":20000022294766936e\n")) {
+		String message = ":100000" + String(mesh.getNodeId()) + "64" + "\n";
+		mesh.sendBroadcast(message);
+	}
 }
